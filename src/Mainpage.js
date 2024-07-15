@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Mainpage = () => {
   // const notify = (e) => toast(e);
-  const postapiurl = "http://40.233.84.103:5001/add-user";
+  const postapiurl = "https://ar-backend-2-uabw.onrender.com/add-user";
 
   const [selectedLanguages, setSelectedLanguages] = useState([]);
   // const [selectedtechnologies, setSelectedtechnologies] = useState([]);
@@ -21,6 +21,8 @@ const Mainpage = () => {
     "Java",
     "CPP",
     "C",
+    "C-Sharp",
+    "TypeScript",
     "Dart",
     "HTML",
     "CSS",
@@ -384,7 +386,7 @@ const Mainpage = () => {
             </button>
           </div>
           <div className="logo">
-            <img src="../cv.png" className="logo" alt="logo" />
+            <img src="../public/cv.png" className="logo" alt="logo" />
           </div>
         </div>
       </div>
