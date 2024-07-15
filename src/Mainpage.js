@@ -5,7 +5,7 @@ import "./mainpage.css";
 import { useState } from "react";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
-// import { ToastContainer, toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Mainpage = () => {
@@ -14,6 +14,7 @@ const Mainpage = () => {
 
   const [selectedLanguages, setSelectedLanguages] = useState([]);
   // const [selectedtechnologies, setSelectedtechnologies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const programmingLanguages = [
     "JavaScript",
@@ -206,7 +207,7 @@ const Mainpage = () => {
     frameworks: {},
   });
 
-  console.log(formData.projects);
+  // console.log(formData.projects);
 
   const handlePersonalChange = (e) => {
     const { name, value } = e.target;
@@ -283,6 +284,7 @@ const Mainpage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const request = new Request(postapiurl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -291,16 +293,20 @@ const Mainpage = () => {
     fetch(request)
       .then((response) => {
         if (response.ok) {
-          alert("Form submitted successfully!");
+          // alert("Form submitted successfully!");
+          toast.success("Form submitted successfully!", {});
           // setIsFormSubmitted(true);
         } else {
-          throw new Error("Failed to submit form");
+          toast.error("Error submitting form");
+          // throw new Error("Failed to submit form");
         }
       })
       .catch((error) => {
         console.error("Error:", error);
         alert("Error submitting form");
-      });
+        toast.error("Error Submitting form");
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -386,7 +392,11 @@ const Mainpage = () => {
             </button>
           </div>
           <div className="logo">
-            <img src="../public/cv.png" className="logo" alt="logo" />
+            <img
+              src="https://raw.githubusercontent.com/Bhargav02550/Resume-Page/main/public/cv.png"
+              className="logo"
+              alt="logo"
+            />
           </div>
         </div>
       </div>
@@ -622,6 +632,11 @@ const Mainpage = () => {
         </div>
       </div>
       <div id="submitform">
+        {isLoading && (
+          <div className="loading-overlay">
+            <p>Uploading data...</p>
+          </div>
+        )}
         <div className="formpage-4 scrollable-3">
           <div className="welcome">Preview and Submit</div>
           <div className="field">
@@ -648,7 +663,7 @@ const Mainpage = () => {
             <div className="preview">
               <p>Education:</p>
               <p>
-                <h4>Secondary Education</h4>
+                Secondary Education
                 {formData.education.secondaryCollege}{" "}
                 {formData.education.secondaryCollegeName}
               </p>
