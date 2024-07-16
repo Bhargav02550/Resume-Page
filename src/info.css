@@ -92,17 +92,61 @@ article {
     }
 }
 
-@media screen and (max-width: 600px) {
-    .techstack{
+/* @media screen and (max-width: 600px) and (min-width: 300px) {
+    .techstack {
+        display: flex;
         flex-wrap: wrap;
+        flex-direction: column;
+    }
+} */
+
+@media screen and (max-width: 500px) {
+    .techstack {
+        flex-direction: column;
+    }
+
+    .lists {
+        gap: 3px;
+        justify-content: flex-start;
+    }
+
+    .team {
+        gap: 15px;
+        margin: 0px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .techstack {
+        flex-direction: row;
+    }
+
+    .team {
+        gap: 30px;
+        margin: 10px;
     }
 }
 
 .techstack {
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     align-items: center;
     justify-content: start;
+    flex-wrap: wrap;
+}
+
+.lists {
+    list-style: none;
+    display: flex;
+    padding: 0px;
+    /* gap: 10px; */
+}
+
+@media screen and (min-width: 500px) {
+    .lists {
+        gap: 10px;
+        flex-direction: row;
+    }
 }
 
 .chip {
@@ -120,9 +164,9 @@ article {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    /* margin: 10px; */
     width: 100%;
-    gap: 30px;
+    /* gap: 30px; */
 }
 
 .team img {

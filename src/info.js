@@ -3,13 +3,11 @@ import "./info.css";
 import { Link, useNavigate } from "react-router-dom";
 
 const Info = () => {
+  const naviagte = useNavigate();
 
-    const naviagte = useNavigate();
-
-    const handleclick = () => {
-        naviagte("/mainpage");
-    }
-
+  const handleclick = () => {
+    naviagte("/mainpage");
+  };
 
   return (
     <div className="main-content">
@@ -18,21 +16,14 @@ const Info = () => {
         <article>
           <div className="contentt">
             <strong>Ever wondered of using augmented reality?</strong>
-            Hai I'm Bhargav,<br></br> Welcome to your team Project Enigma CV.
+            Hai Buddy!<br></br> Welcome to your team Project Enigma CV.
             <br></br>
             We worked on generating dynamic resumes using augmented reality. In
             this project, we created a resume generator using react and node.js
             and augmented reality part using Unity and Vuforia engine.
             <div className="techstack">
               Tech Stack:
-              <ul
-                style={{
-                  listStyle: "none",
-                  display: "flex",
-                  flexDirection: "row",
-                  gap: "15px",
-                }}
-              >
+              <ul className="lists">
                 <li className="chip">
                   <img
                     src="https://cdn.worldvectorlogo.com/logos/react-2.svg"
@@ -75,7 +66,10 @@ const Info = () => {
               </ul>
             </div>
             <div className="get_started">
-              Fill Details to explore Enigma CV<button onClick={handleclick}><span>Get Started</span> &#8594;</button>
+              Fill Details to explore Enigma CV
+              <button onClick={handleclick}>
+                <span>Get Started</span> &#8594;
+              </button>
             </div>
           </div>
           <div className="contentt">
